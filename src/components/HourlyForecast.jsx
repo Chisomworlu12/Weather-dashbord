@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { WeatherAPIContext } from "./WeatherAPI";
 import WeatherCard from "./WeatherCard";
 import Loader from "./Loader";
+import ErrorMsg from "./Error";
 
 export default function HourlyForecast() {
     const { forecast, loading, error } = useContext(WeatherAPIContext); 
@@ -25,6 +26,8 @@ export default function HourlyForecast() {
                         <Loader />
                     </div>
                 )}
+                
+              
                 
                 {error && !loading && (
                     <ErrorMsg error={error} />
