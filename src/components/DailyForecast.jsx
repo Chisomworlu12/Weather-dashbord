@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import WeatherCard from "./weatherCard";
+import WeatherCard from "./WeatherCard";
 import { WeatherAPIContext } from "./WeatherAPI";
 import Loader from "./Loader";
 
