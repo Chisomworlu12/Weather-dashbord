@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { WeatherAPIContext } from "./WeatherAPI";
-import WeatherCard from "./weatherCard";
+import WeatherCard from "./WeatherCard";
 import Loader from "./Loader";
 
 export default function HourlyForecast() {
