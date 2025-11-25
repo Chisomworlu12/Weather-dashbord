@@ -16,24 +16,27 @@ export default function WeatherAPIProvider({ children }) {
         return storedValue ? JSON.parse(storedValue) : [];
     });
 
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    fetchWeatherByCoords(latitude, longitude);
-                },
-                (error) => {
-                    console.error("Error getting location:", error);
-                    setError("Unable to get your location. Please allow location access or search for a city.");
-                    setLoading(false);
-                }
-            );
-        } else {
-            setError("Geolocation is not supported by your browser.");
-            setLoading(false);
-        }
-    }, []);
+ useEffect(() => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                console.log("📍 User location:", latitude, longitude);
+                fetchWeatherByCoords(latitude, longitude);
+            },
+            (error) => {
+                console.error("Error getting location:", error);
+            
+                console.log("Location access denied. Using default location: Lagos, Nigeria");
+                fetchWeatherByCoords(6.5244, 3.3792); 
+            }
+        );
+    } else {
+        
+        console.log("Geolocation not supported. Using default location: Lagos, NG");
+        fetchWeatherByCoords(6.5244, 3.3792); 
+    }
+}, []);
 
     const fetchWeatherByCoords = (lat, lon) => {
         setLoading(true);
