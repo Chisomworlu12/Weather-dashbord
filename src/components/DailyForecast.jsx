@@ -4,9 +4,8 @@ import { WeatherAPIContext } from "./WeatherAPI";
 import Loader from "./Loader";
 import ErrorMsg from "./Error";
 
-export default function DailyForecast() {
+export default function DailyForecast({className}) {
     const { forecast, loading, error } = useContext(WeatherAPIContext); 
-    console.log(forecast);
 
     const getDayName = (dateString) => {
         const date = new Date(dateString);
@@ -15,8 +14,8 @@ export default function DailyForecast() {
     };
 
     return (
-        <div className="flex justify-center my-10">
-            <div className="card shadow-sm p-10 w-[80%] md:w-[70%] lg:w-[60%]">
+        <div className={className}>
+            <div className="card shadow-sm p-6 w-[80%] md:w-120 lg:w-155 bg-linear-to-b from-blue-500 to-blue-300">
                 <h2 className="text-xl font-bold mb-4 text-center md:text-left">5-Day Forecast</h2>
                 
                 {loading && (

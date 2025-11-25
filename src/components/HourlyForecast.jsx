@@ -4,7 +4,7 @@ import WeatherCard from "./WeatherCard";
 import Loader from "./Loader";
 import ErrorMsg from "./Error";
 
-export default function HourlyForecast() {
+export default function HourlyForecast({className} ) {
     const { forecast, loading, error } = useContext(WeatherAPIContext); 
 
     const getTime = (dateString) => {
@@ -17,9 +17,9 @@ export default function HourlyForecast() {
     };
 
     return (
-        <div className="flex justify-center my-10">
-            <div className="card shadow-sm p-10 w-[80%] md:w-[70%] lg:w-[60%]">
-                <h2 className="text-xl font-bold mb-4 text-center md:text-left">Hourly Forecast</h2>
+        <div className={className}>
+            <div className="card flex shadow-sm p-6 w-[80%] md:w-120 lg:w-158 bg-linear-to-b from-blue-500 to-blue-300">
+                <h2 className="text-xl font-bold mb-4 text-center md:text-left text-white">Hourly Forecast</h2>
                 
                 {loading && (
                     <div className="flex justify-center py-8">
