@@ -17,6 +17,7 @@ function Forecast() {
     <div className="min-h-screen ">
        <div className="flex justify-center my-10 md:mr-68">
         <div className=" px-5  w-[80%] md:w-[70%] lg:w-[60%]">
+          {loading && <h1 className="text-2xl">Date Loading</h1>}
           {error && <h1 className="text-2xl">Error</h1>}
         {!error && <><h1 className="text-2xl">Forecast for {locationName},{country}</h1>
         <div>{timeFormater}</div></>}

@@ -131,7 +131,7 @@ export default function WeatherAPIProvider({ children }) {
         timeZone: "UTC"
     };
 
-    const timeFormater = new Intl.DateTimeFormat("en-US", options).format(locationTime);
+    const timeFormater = locationTime ? new Intl.DateTimeFormat("en-US", options).format(locationTime): '';
 
     
     const addBookmark = (weatherData) => {
