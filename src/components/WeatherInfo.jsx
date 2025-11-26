@@ -10,7 +10,7 @@ export default function WeatherInfo({ variant = "default"}){
 
      if(variant=== "default")
     return(<>
-              <div className="flex flex-col items-center justify-center flex-wrap">
+              <div className="flex flex-col items-center justify-center flex-wrap ">
                  <Humidity className="w-5 h-5" />
                  <div className="mt-2 flex flex-col items-center">
                   <span>{humidity}%</span>

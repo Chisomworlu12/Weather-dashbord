@@ -15,8 +15,8 @@ export default function DailyForecast({className}) {
 
     return (
         <div className={className}>
-            <div className="card shadow-sm p-6 w-[80%] md:w-120 lg:w-155 bg-linear-to-b from-blue-500 to-blue-300">
-                <h2 className="text-xl font-bold mb-4 text-center md:text-left">5-Day Forecast</h2>
+            <div className="card shadow-sm p-6 w-[80%] md:w-120 lg:w-155 bg-gradient-to-b from-primary to-primary/60">
+                <h2 className="text-xl font-bold mb-4 text-center md:text-left text-primary-content">5-Day Forecast</h2>
                 
                 {loading && (
                     <div className="flex justify-center py-8">
@@ -29,7 +29,7 @@ export default function DailyForecast({className}) {
                 )}
                 
                 {!loading && !error && (!forecast || !forecast.list) && (
-                    <div className="text-center py-8 text-gray-500">
+                    <div className="text-center py-8 text-base-content/70">
                         No forecast data available.
                     </div>
                 )}
