@@ -29,7 +29,7 @@ export default function BookMarks() {
                             onClick={() => handleBookmarkClick(location)}
                             className="cursor-pointer transition-transform hover:scale-105"
                         >
-                            <div className="bg-blue-400 card w-full h-fit hover:bg-blue-500 transition-colors relative">
+                            <div className="bg-primary card w-full h-fit hover:bg-primary/70 transition-colors relative text-white">
                                 <button
                                     onClick={(e) => handleRemoveBookmark(e, location)}
                                     className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 transition-colors z-10"
