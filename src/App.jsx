@@ -7,22 +7,27 @@ import NavBar from './components/Navbar'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
-
-
   return (
-<WeatherAPIProvider>
- <Router>
-  <NavBar/>
-   <Routes>
-    <Route path='/' element={<Home/>}/>
-    <Route path='/forecast' element={<Forecast/>}/>
-    <Route path='/bookmarks' element={<BookMarks/>}/>
-   </Routes>
-   </Router>
-</WeatherAPIProvider>
+    <WeatherAPIProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <NavBar />
+          
+          <main className="flex-grow">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/forecast' element={<Forecast />} />
+              <Route path='/bookmarks' element={<BookMarks />} />
+            </Routes>
+          </main>
+          
+          <footer className='text-center py-4 bg-base-200 text-base-content'>
+            Made By <a href="https://github.com/Chisomworlu12" className='underline text-primary hover:text-primary-focus'>Chisom Worlu</a> with ❤
+          </footer>
+        </div>
+      </Router>
+    </WeatherAPIProvider>
   )
 }
 
 export default App
-
-

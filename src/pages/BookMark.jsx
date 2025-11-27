@@ -20,7 +20,9 @@ export default function BookMarks() {
     return (
         <>
             {bookmarks.length < 1 ? (
-                <p className="p-4 text-center">BOOKMARK EMPTY</p>
+                <div className="flex justify-center items-center">
+                <p className="p-4 ">BOOKMARK EMPTY</p>
+                </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
                     {bookmarks.map(location => (
