@@ -1,11 +1,12 @@
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import SearchIcon from "./Search";
 import { WeatherAPIContext } from "./WeatherAPI";
 
 export default function FindLocation() {
   const{setQuery} = useContext(WeatherAPIContext)
   const [inputValue, setInputValue] = useState("");
+  const inputEl = useRef(null)
  
  const handleSearch = (e) => {
     e.preventDefault();
@@ -13,7 +14,21 @@ export default function FindLocation() {
     setQuery(inputValue);
   setInputValue("");
   }
+ useEffect(
+    function () {
+      function callback(e) {
+        if (document.activeElement === inputEl) return;
+        if (e.code === "Enter") {
+          inputEl.current.focus();
+          setQuery("");
+        }
+      }
 
+      document.addEventListener("keydown", callback);
+      return () => document.addEventListener("keydown", callback);
+    },
+    [setQuery]
+  )
   
   return(
     <div className="">
@@ -23,7 +38,8 @@ export default function FindLocation() {
           <input 
             type="text" 
             placeholder="Search city..." 
-            className="border-none outline-none w-full text-[13px]" value={inputValue} onChange={e=> setInputValue(e.target.value)} 
+            className="border-none outline-none w-full text-[13px]" value={inputValue} onChange={e=> setInputValue(e.target.value)}
+            ref={inputEl} 
           />
         </form>
       </div>
