@@ -75,6 +75,10 @@ A modern, responsive weather application built with React and Vite that provides
 - **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile devices
 - **Fast Loading** - Built with Vite for optimal performance
 
+## Flowchart
+
+View Flowchart [[Flowchart](https://mermaid.live/view#pako:eNqFVv1u4jgQfxUrla53Eu2GQCiJTnvqQbt7UmGro7urO-APk0zAIsSRY8py0He5Z7knO38kjtOWtqpaz3jm5_n4eZyDE9EYnNBJUrqLVphx9DCcZRMuVj9Pv-QpoO-A-QoYus5z9CWHrJj_gi4uPqLBCqL1HY0wJzQ7VItfF-zDx3tgG1IUQvztaZbNsv_-ReK34SAhjp8YzjjER3QLPFqVB02VYI4dYo4VaEIZGmwZg4yjCmV-GnsIGZHQQ0jwNuXV3vRrAegOL2nRQmOyBEY0Oi4qSxu8gn8GovK3Y64tbW1dpjHwHWXrQ_lfnXj9iEmKFym8qFFppdIY0yMq5RvGKJtOVnRXaZBSKbQRFAVewvwk0F9QHEVqOCbZUrSXg0YqNWiSkywDZuVsn6oy-Y4JL5VTuUaqI1S4RY1eWHYvKlDD26EosyEp8hTvKxaUoml5qbeb0nBQGCNMshFk24PosmCsissub7WvKvKNwA7dUgYRLvjRrO5FGadj_EiWMjJOVXmrTXRvF7kBNwHMBG8HhO-PSAtyPb0RFGdKjcZ4o51Px_M7pesNZmvRrGr5akDG7o2IKhvD6CO6juNKOxVrgVaf-DrIA10uxRR4WMEGRF47IvithKleozuyXPEPQ3nOSMwSq0F1EVRzvuGUxCIFqTjIP2Vlt1kse6R9bKOat827dsJSXhUpjClXoJrg57rylCOlPK9viGWq4qvDta6zRQptJDD9Id5X_GyhlDyCvArKDpBKCrX8C2Fk3JWyhT7TLUv3aqRpu5_upPMI52hek6I6osFozZrKxKZGfcdMJw-fcdFkSV3gpqUp3M0m53trLpwb8qid8_kb_qpF0suoze01KAPM4sLmhm2uUqgkfWuf3-Bm3lqvDh-kJFqbDT3iDMWlYF6SpByVE0jFxIL45SvyCvyfsKGiRTX-UHhzMCeU-wmjG3ETCj5vTjiT_8sXo3pZbDhl9jWXtJ5wyuTF15KKNS11Jt6GZaOIkhh1JHVzn3GqMrDGgmY5foQHWoUgJTkpXo2hYWquyGQbReJF0lwy0H9E5QeCeG1vSZpCPLf5UDqdiNEaPVaZ9Cgqi6Q3iT7jjYrVIOKjJt1rDLUsIUSyQjRetdWJ2Aq-FzNSfTWhRCQWnnVxDH23VXBG1xCeeV7k-1CKFzsS81XYyX-0IppSFp65rtuEev7BoUGTxSLxugY08QNwF01Q7y3Q5oOpMXsu9hNsMDuLvpf0XmA2gRrjR8Pgq_7Cgukv_OhdmMZwLTPsXnmLnoGBqNsPgndgxPi0ERaB14nqGgVXnfZ7gTQ-dTQMJF3xY2DiyOt5vZOlTpLEaTlLRmIn5GwLLWcjPoGxFJ3DLENo5nBJn5kTimUsSjdzZtmT8Mlx9jelm8qN0e1y5YQJTgshbRVbhwQvGa5NIIuBDcSzxZ2w2_YUhhMenB9OeBG4l52-7165Xa8TtF2v3XL2Qu31_cu257tBp9MP2kHQf2o5_6hj25dXviCK224Hnht4_aD39D80VnUH)]
+
 ## Technologies Used
 
 - **React** - Frontend library
@@ -163,6 +167,7 @@ weather-app/
 │   ├── components/
 │   │   ├── WeatherAPI.jsx          # Weather API provider (Context)
 │   │   ├── CurrentWeather.jsx      # Current weather component
+│   │   ├── WeatherCard.jsx         # Resuseable weather Card Component
 │   │   ├── LiveWeather.jsx         # Reusable weather display
 │   │   ├── DailyForecast.jsx       # 5-day forecast component
 │   │   ├── HourlyForecast.jsx      # Hourly forecast component
@@ -171,23 +176,18 @@ weather-app/
 │   │   ├── FindLocation.jsx        # City search component
 │   │   ├── Loader.jsx              # Loading spinner component
 │   │   ├── Error.jsx               # Error display component
+│   │   ├── Map.jsx                 # Map display component
+│   │   ├── Search.jsx              # Search display component
 │   │   └── WeatherIcons/           # Custom weather icon components
 │   │       ├── BookmarkIcon.jsx    # Bookmark toggle icon
-│   │       ├── Sun.jsx
-│   │       ├── Cloudy.jsx
-│   │       ├── CloudySun.jsx
-│   │       ├── CloudyMoon.jsx
-│   │       ├── Rainy.jsx
-│   │       ├── Snowy.jsx
 │   │       ├── Humidity.jsx
 │   │       ├── Pressure.jsx
 │   │       ├── WindSpeed.jsx
-│   │       └── UVIndex.jsx
+│   │       └── Visibility.jsx
 │   ├── pages/
 │   │   ├── Home.jsx                # Home page component
 │   │   ├── Forecast.jsx            # Forecast page
 │   │   ├── BookMarks.jsx           # Bookmarks page
-│   │   └── Map.jsx                 # Map page
 │   ├── App.jsx                     # Main app component with routing
 │   ├── main.jsx                    # App entry point
 │   └── index.css                   # Global styles
