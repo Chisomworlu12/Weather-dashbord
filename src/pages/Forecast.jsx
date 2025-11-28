@@ -54,7 +54,7 @@ function Forecast() {
        </div>
        <div className="flex justify-center my-5 ">
        <div className="h-[300px] md:h-[400px] card shadow-sm w-[80%] md:w-120 lg:w-155 md:mr-68">
-        <h2 className="text-xl font-bold mb-4 text-center md:text-left px-10">Map</h2>
+        <h2 className="text-xl font-bold my-4 text-center md:text-left px-10">Map</h2>
             <Map/>
 
        </div>

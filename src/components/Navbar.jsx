@@ -28,6 +28,8 @@ export default function NavBar() {
     return isActive(path) ? 'active' : '';
   };
 
+  const isBookmarksPage = location.pathname === '/bookmarks';
+
   return (
     <>
       <div className="navbar bg-base-100 shadow-sm">
@@ -58,7 +60,6 @@ export default function NavBar() {
         </div>
         
         <div className="navbar-end gap-2">
-         
           <button 
             onClick={toggleTheme}
             className="btn btn-ghost btn-circle"
@@ -75,7 +76,9 @@ export default function NavBar() {
               </svg>
             )}
           </button>
-          <FindLocation/>
+          
+        
+          {!isBookmarksPage && <FindLocation/>}
         </div>
       </div>
 

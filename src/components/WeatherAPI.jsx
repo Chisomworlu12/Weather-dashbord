@@ -16,24 +16,22 @@ export default function WeatherAPIProvider({ children }) {
         return storedValue ? JSON.parse(storedValue) : [];
     });
 
+
  useEffect(() => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const { latitude, longitude } = position.coords;
-                console.log("📍 User location:", latitude, longitude);
                 fetchWeatherByCoords(latitude, longitude);
             },
             (error) => {
                 console.error("Error getting location:", error);
             
-                console.log("Location access denied. Using default location: Lagos, Nigeria");
                 fetchWeatherByCoords(6.5244, 3.3792); 
             }
         );
     } else {
         
-        console.log("Geolocation not supported. Using default location: Lagos, NG");
         fetchWeatherByCoords(6.5244, 3.3792); 
     }
 }, []);
@@ -44,7 +42,7 @@ export default function WeatherAPIProvider({ children }) {
         
         axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}`)
             .then(response => {
-                console.log('Current weather:', response.data);
+               
                 setWeather(response.data);
                 setError(null); 
             })
@@ -77,7 +75,6 @@ export default function WeatherAPIProvider({ children }) {
         
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${query}&APPID=${API_KEY}`)
             .then(response => {
-                console.log('Current weather:', response.data);
                 setWeather(response.data);
                 setError(null); 
             })

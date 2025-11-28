@@ -1,6 +1,63 @@
-# Weather App
+# Ople Weather App
 
-A modern, responsive weather application built with React and Vite that provides real-time weather information, hourly forecasts, and 5-day forecasts based on your location.
+A modern, responsive weather application built with React and Vite that provides real-time weather information, interactive maps, location bookmarks, and detailed forecasts.
+
+## User Stories
+
+### 1. Automatic Location-Based Forecast
+
+**As a** user  
+**I want** the app to automatically detect my location and show the weather forecast  
+**So that** I can quickly see the weather conditions where I am without manual input
+
+**Status:** ✅ Implemented
+
+**Features:**
+
+- ✅ Auto-detects user location on app load
+- ✅ Displays current weather with temperature, humidity, pressure, and wind speed
+- ✅ Shows 5-day forecast for current location
+- ✅ Handles permission errors gracefully with fallback to manual search
+- ✅ Real-time weather updates
+
+---
+
+### 2. Map-Based Location View
+
+**As a** user  
+**I want** to see weather locations displayed on a map  
+**So that** I can visually understand the geographic context of weather conditions
+
+**Status:** ✅ Implemented
+
+**Features:**
+
+- ✅ Interactive weather map display
+- ✅ Visual location markers
+- ✅ Geographic weather representation
+- ✅ Map integration with current location
+
+---
+
+### 3. Multiple Location Bookmarks
+
+**As a** user  
+**I want** to save multiple locations as bookmarks  
+**So that** I can quickly check weather for places I care about (home, work, family locations)
+
+**Status:** ✅ Implemented
+
+**Features:**
+
+- ✅ Bookmark current weather location with one click
+- ✅ Bookmarks persist across app sessions (localStorage)
+- ✅ Dedicated bookmarks page with visual cards
+- ✅ Click any bookmark to load current weather data
+- ✅ Remove bookmarks easily with delete button
+- ✅ Bookmarks auto-update with fresh data when clicked
+- ✅ Visual indicator showing bookmarked status
+
+---
 
 ## Features
 
@@ -9,6 +66,10 @@ A modern, responsive weather application built with React and Vite that provides
 - **Current Weather** - Real-time temperature, feels-like temperature, humidity, pressure, and wind speed
 - **Hourly Forecast** - Next 18 hours of weather predictions (3-hour intervals)
 - **5-Day Forecast** - Daily weather forecast for the next 5 days
+- **Interactive Map** - Visual geographic representation of weather locations
+- **Location Bookmarks** - Save and manage multiple favorite locations
+- **Dark/Light Theme** - Toggle between themes for comfortable viewing
+- **Offline Detection** - Smart network error handling with user-friendly messages
 - **Dynamic Weather Icons** - Different icons for various weather conditions (sunny, cloudy, rainy, snowy)
 - **Day/Night Support** - Icons adapt based on time of day
 - **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile devices
@@ -18,10 +79,13 @@ A modern, responsive weather application built with React and Vite that provides
 
 - **React** - Frontend library
 - **Vite** - Build tool and development server
+- **React Router** - Navigation and routing
 - **Axios** - HTTP client for API requests
 - **Tailwind CSS** - Utility-first CSS framework
+- **DaisyUI** - Tailwind CSS component library
 - **OpenWeatherMap API** - Weather data provider
 - **Context API** - State management
+- **LocalStorage API** - Persistent bookmark storage
 
 ## Prerequisites
 
@@ -54,12 +118,12 @@ yarn install
 3. Generate an API key
 4. Copy your API key
 
-### 4. Configure API Key
+### 4. Configure Environment Variables
 
-Open `src/components/WeatherAPI.jsx` and replace the API key:
+Create a `.env` file in the root directory:
 
-```javascript
-const API_KEY = "your_api_key_here";
+```bash
+VITE_WEATHER_API_KEY=your_api_key_here
 ```
 
 ### 5. Run the development server
@@ -99,12 +163,16 @@ weather-app/
 │   ├── components/
 │   │   ├── WeatherAPI.jsx          # Weather API provider (Context)
 │   │   ├── CurrentWeather.jsx      # Current weather component
+│   │   ├── LiveWeather.jsx         # Reusable weather display
 │   │   ├── DailyForecast.jsx       # 5-day forecast component
 │   │   ├── HourlyForecast.jsx      # Hourly forecast component
-│   │   ├── WeatherCard.jsx         # Reusable weather card component
+│   │   ├── WeatherInfo.jsx         # Weather details component
+│   │   ├── NavBar.jsx              # Navigation bar with theme toggle
+│   │   ├── FindLocation.jsx        # City search component
 │   │   ├── Loader.jsx              # Loading spinner component
 │   │   ├── Error.jsx               # Error display component
 │   │   └── WeatherIcons/           # Custom weather icon components
+│   │       ├── BookmarkIcon.jsx    # Bookmark toggle icon
 │   │       ├── Sun.jsx
 │   │       ├── Cloudy.jsx
 │   │       ├── CloudySun.jsx
@@ -115,9 +183,12 @@ weather-app/
 │   │       ├── Pressure.jsx
 │   │       ├── WindSpeed.jsx
 │   │       └── UVIndex.jsx
-│   ├── home/
-│   │   └── Home.jsx                # Home page component
-│   ├── App.jsx                     # Main app component
+│   ├── pages/
+│   │   ├── Home.jsx                # Home page component
+│   │   ├── Forecast.jsx            # Forecast page
+│   │   ├── BookMarks.jsx           # Bookmarks page
+│   │   └── Map.jsx                 # Map page
+│   ├── App.jsx                     # Main app component with routing
 │   ├── main.jsx                    # App entry point
 │   └── index.css                   # Global styles
 ├── .env                            # Environment variables (not committed)
@@ -125,6 +196,7 @@ weather-app/
 ├── .gitignore                      # Git ignore file
 ├── index.html
 ├── package.json
+├── tailwind.config.js              # Tailwind configuration
 ├── vite.config.js
 └── README.md
 ```
@@ -135,9 +207,13 @@ weather-app/
 
 - Real-time temperature and feels-like temperature
 - Weather condition with dynamic icon
+- Location name and country
+- Formatted date display
 - Humidity percentage
 - Atmospheric pressure
 - Wind speed (converted to km/h)
+- Visibility distance
+- Bookmark toggle button
 
 ### Hourly Forecast
 
@@ -152,6 +228,22 @@ weather-app/
 - Day names (Mon, Tue, Wed, etc.)
 - Temperature predictions
 - Weather condition icons
+
+### Bookmarks System
+
+- Save unlimited favorite locations
+- Visual bookmark cards with complete weather info
+- One-click weather loading from bookmarks
+- Persistent storage across sessions
+- Easy removal of unwanted bookmarks
+- Responsive grid layout
+
+### Theme Support
+
+- Light and dark mode toggle
+- Persistent theme preference
+- System-wide theme application
+- Smooth theme transitions
 
 ## API Information
 
@@ -185,7 +277,7 @@ axios.get(`...&units=imperial`); // Fahrenheit
 
 ### Location
 
-The app automatically detects your location using the browser's Geolocation API. If denied, you can search for cities manually.
+The app automatically detects your location using the browser's Geolocation API. If denied, you can search for cities manually using the search feature.
 
 ## Troubleshooting
 
@@ -193,17 +285,42 @@ The app automatically detects your location using the browser's Geolocation API.
 
 - Make sure you've allowed location access in your browser
 - Check browser console for geolocation errors
+- Use the search feature to manually enter a city
 
 ### API errors
 
-- Verify your API key is correct and active
+- Verify your API key is correct and active in `.env` file
 - Check if you've exceeded API rate limits
 - Ensure you have internet connectivity
+- Check browser console for detailed error messages
+
+### Network errors
+
+- The app will display "No internet connection" message when offline
+- Check your WiFi or mobile data connection
+- The app automatically detects when connection is restored
 
 ### Build errors
 
 - Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
 - Clear Vite cache: `rm -rf .vite`
+- Ensure `.env` file is properly configured
+
+### Bookmarks not saving
+
+- Check if localStorage is enabled in your browser
+- Clear browser cache and try again
+- Check browser console for storage errors
+
+## Browser Support
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Opera
+
+**Note:** Geolocation API requires HTTPS in production (except localhost).
 
 ## 📄 License
 
@@ -222,6 +339,8 @@ Chisom Worlu
 - [OpenWeatherMap](https://openweathermap.org/) for the weather API
 - [Vite](https://vitejs.dev/) for the amazing build tool
 - [Tailwind CSS](https://tailwindcss.com/) for the styling utilities
+- [DaisyUI](https://daisyui.com/) for the beautiful components
+- [React Router](https://reactrouter.com/) for seamless navigation
 
 ---
 
