@@ -22,7 +22,7 @@ function App() {
           </main>
           
           <footer className='text-center py-4 bg-base-200 text-base-content'>
-            Made By <a href="https://github.com/Chisomworlu12" className='underline text-primary hover:text-primary-focus'>Chisom Worlu</a> with ❤
+            Made By <a href="https://github.com/Chisomworlu12" className='underline text-primary hover:text-primary-focus' target="_blank" rel="noopener noreferrer">Chisom Worlu</a> with ❤
           </footer>
         </div>
       </Router>
